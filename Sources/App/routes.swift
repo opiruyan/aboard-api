@@ -17,4 +17,14 @@ public func routes(_ router: Router) throws {
     router.get("todos", use: todoController.index)
     router.post("todos", use: todoController.create)
     router.delete("todos", Todo.parameter, use: todoController.delete)
+    
+    
+    router.post("api", "wizard") { req -> Future<Response> in
+        let wizardFuture = try req.content.decode(WizardRequest.self);
+        let _ = wizardFuture.do({ wizard in
+            print(wizard);
+        });
+        return Stage(name: "welcome", description: "start you jorney").encode(status: .created, for: req);
+        
+    }
 }
