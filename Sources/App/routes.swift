@@ -19,12 +19,10 @@ public func routes(_ router: Router) throws {
     router.delete("todos", Todo.parameter, use: todoController.delete)
     
     
-    router.post("api", "wizard") { req -> Future<Response> in
+    router.post("api", "wizard") { req -> Future<FirstStageSteps> in
         let wizardFuture = try req.content.decode(WizardRequest.self);
-        let _ = wizardFuture.do({ wizard in
-            print(wizard);
-        });
-        return Stage(name: "welcome", description: "start you jorney").encode(status: .created, for: req);
-        
+        return wizardFuture.map(to: FirstStageSteps.self) { loginRequest in
+            return FirstStageSteps()
+        }
     }
 }
