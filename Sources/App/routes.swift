@@ -26,6 +26,14 @@ public func routes(_ router: Router) throws {
             return jorney
         }
     }
+    
+    router.get("api", "dashboard") { req -> DashboardResponse in
+        return dashboard(req);
+    }
+}
+
+func dashboard(_ req: Request) -> DashboardResponse {
+    return DashboardResponse(teamName: "HBR");
 }
 
 func onBoardJorney() -> Jorney {
