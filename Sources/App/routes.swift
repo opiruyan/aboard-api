@@ -34,9 +34,8 @@ func onBoardJorney() -> Jorney {
 }
 
 func jrn() -> [Stage<ChecklistStep>] {
-    let firstStageSteps = FirstStageSteps()
     let firstStage = StageFactory.stage(with: "Introduction", description: "New colleagues' on-boarding FAQ", steps: nil);
-    let secondStage = StageFactory.stage(with: "Prerequisites", description: "New colleagues' on-boarding FAQ", steps: firstStageSteps.checklist);
+    let secondStage = StageFactory.stage(with: "Prerequisites", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: secondSteps()));
     let thirdStage =
         StageFactory.stage(with: "Network setup", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: thirdSteps()));
     let fourthStage =
@@ -44,6 +43,13 @@ func jrn() -> [Stage<ChecklistStep>] {
     let fifthStage = StageFactory.stage(with: "Setup email signature", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fifthSteps()));
     let finalStage = StageFactory.stage(with: "Done", description: "Welcome to our family!", steps: nil)
     return [firstStage, secondStage, thirdStage, fourthStage, fifthStage, finalStage];
+}
+
+func secondSteps() -> [String] {
+    return ["Get hardware, unpack, connect everything",
+            "All passwords have to be more than 14 characters. Please use numbers, letters, symbols.",
+            "All screen name format for 3rd party accounts is firstname.lastname"
+    ];
 }
 
 func thirdSteps() -> [String] {
