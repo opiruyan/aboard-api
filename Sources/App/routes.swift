@@ -24,13 +24,13 @@ public func routes(_ router: Router) throws {
     router.post("api", "wizard", use: controller.startWizard);
 }
 
-func dashboard(_ req: Request) -> DashboardResponse {
-    return DashboardResponse(teamName: "HBR");
+func dashboard(_ team: String) -> DashboardResponse {
+    return DashboardResponse(teamName: team);
 }
 
-func onBoardJorney() -> Jorney {
+func onBoardJorney(for user: String, team: String) -> Jorney {
     let stages = jrn();
-    return Jorney(stages: stages);
+    return Jorney(user: user, ofTeam: team, stages: stages);
 }
 
 func jrn() -> [Stage<ChecklistStep>] {

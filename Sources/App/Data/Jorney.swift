@@ -1,11 +1,13 @@
 import Vapor
 
 struct Jorney: Content {
-    var name = "Very First Thing to do"
+    var name: String;
+    var team: String;
     var steps: [Stage<ChecklistStep>];
     
-    init(stages: [Stage<ChecklistStep>]) {
-        self.name = "introduction";
+    init(user name: String, ofTeam: String, stages: [Stage<ChecklistStep>]) {
+        self.name = name;
+        self.team = ofTeam;
         self.steps = stages;
     }
 }
