@@ -35,12 +35,15 @@ func onBoardJorney() -> Jorney {
 
 func jrn() -> [Stage<ChecklistStep>] {
     let firstStageSteps = FirstStageSteps()
-    let firstStage = Stage<ChecklistStep>(name: "Introduction", description: "New colleagues' on-boarding FAQ", steps:nil)
-    let secondStage = Stage<ChecklistStep>(name: "Prerequisites", description: "New colleagues' on-boarding FAQ", steps: firstStageSteps.checklist)
-    let thirdStage = Stage<ChecklistStep>(name: "Network setup", description: "New colleagues' on-boarding FAQ", steps:ChecklistFactory.checklist(with: thirdSteps()))
-    let fourthStage = Stage<ChecklistStep>(name: "Get access to email", description: "New colleagues' on-boarding FAQ", steps:ChecklistFactory.checklist(with: thirdSteps()))
-    let fifthStage = Stage<ChecklistStep>(name: "Setup email signature", description: "New colleagues' on-boarding FAQ", steps:ChecklistFactory.checklist(with: thirdSteps()))
-    return [firstStage, secondStage, thirdStage, fourthStage, fifthStage];
+    let firstStage = StageFactory.stage(with: "Introduction", description: "New colleagues' on-boarding FAQ", steps: nil);
+    let secondStage = StageFactory.stage(with: "Prerequisites", description: "New colleagues' on-boarding FAQ", steps: firstStageSteps.checklist);
+    let thirdStage =
+        StageFactory.stage(with: "Network setup", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: thirdSteps()));
+    let fourthStage =
+        StageFactory.stage(with: "Get access to email", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fourthSteps()));
+    let fifthStage = StageFactory.stage(with: "Setup email signature", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fifthSteps()));
+    let finalStage = StageFactory.stage(with: "Done", description: "Welcome to our family!", steps: nil)
+    return [firstStage, secondStage, thirdStage, fourthStage, fifthStage, finalStage];
 }
 
 func thirdSteps() -> [String] {
