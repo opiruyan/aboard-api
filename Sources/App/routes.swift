@@ -47,7 +47,7 @@ func jrn() -> [Stage<ChecklistStep>] {
         StageFactory.stage(with: "Network setup", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: thirdSteps()));
     let fourthStage =
         StageFactory.stage(with: "Get access to email", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fourthSteps()));
-    let fifthStage = StageFactory.stage(with: "Setup email signature", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fifthSteps()));
+    let fifthStage = StageFactory.beStrict(true).stage(with: "Setup email signature", description: "New colleagues' on-boarding FAQ", steps: ChecklistFactory.checklist(with: fifthSteps()));
     let finalStage = StageFactory.stage(with: "Done", description: "Welcome to our family!", steps: nil)
     return [firstStage, secondStage, thirdStage, fourthStage, fifthStage, finalStage];
 }
