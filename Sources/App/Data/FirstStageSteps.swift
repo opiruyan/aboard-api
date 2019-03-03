@@ -6,8 +6,3 @@ struct FirstStageSteps: Content {
                      checklistStep(item: "Do second", status: nil),
                      checklistStep(item: "Do third", status: nil)];
 }
-
-struct checklistStep: Content {
-    var item: String;
-    var status: String?
-}
