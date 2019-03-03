@@ -5,9 +5,8 @@ class MassiveController {
     public var userName: String?;
     private var userTeam: String? {
         didSet {
-            userTeam = userTeam!.uppercased()
-            let teamPoint = self.userTeam!.lowercased();
-            self.router.get("api", "dashboard/\(teamPoint)", use: self.showDashboard);
+            userTeam = userTeam!.lowercased()
+            self.router.get("api", "dashboard/\(userTeam!)", use: self.showDashboard);
         }
     };
     
