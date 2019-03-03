@@ -22,6 +22,7 @@ public func routes(_ router: Router) throws {
     
     let controller = MassiveController(router: router)
     router.post("api", "wizard", use: controller.startWizard);
+    router.get("admin", "user-progress", use: controller.adminWizards);
 }
 
 func dashboard(_ team: String) -> DashboardResponse {

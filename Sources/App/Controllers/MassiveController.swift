@@ -27,4 +27,8 @@ class MassiveController {
             return jorney;
         }
     }
+    
+    func adminWizards(_ req: Request) -> AdminWizards {
+        return AdminWizards();
+    }
 }
