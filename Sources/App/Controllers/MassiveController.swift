@@ -1,8 +1,17 @@
 import Vapor
 
 class MassiveController {
-    private var userName: String?;
+    private let router: Router;
+    public var userName: String? {
+        didSet {
+            self.router.get("api", "dashboard/\(self.userName!)", use: self.showDashboard);
+        }
+    };
     private var userTeam: String?;
+    
+    init(router: Router) {
+        self.router = router;
+    }
     
     func showDashboard(_ req: Request) -> DashboardResponse {
         return dashboard(req);

@@ -20,9 +20,8 @@ public func routes(_ router: Router) throws {
     
     
     
-    let controller = MassiveController()
+    let controller = MassiveController(router: router)
     router.post("api", "wizard", use: controller.startWizard);
-    router.get("api", "dashboard", use: controller.showDashboard);
 }
 
 func dashboard(_ req: Request) -> DashboardResponse {
