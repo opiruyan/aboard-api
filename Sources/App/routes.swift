@@ -19,15 +19,9 @@ public func routes(_ router: Router) throws {
     router.delete("todos", Todo.parameter, use: todoController.delete)
     
     
-    router.post("api", "wizard") { req -> Future<Jorney> in
-        let wizardFuture = try req.content.decode(WizardRequest.self);
-        let jorney = onBoardJorney();
-        return wizardFuture.map(to: Jorney.self) { loginRequest in
-            return jorney
-        }
-    }
     
     let controller = MassiveController()
+    router.post("api", "wizard", use: controller.startWizard);
     router.get("api", "dashboard", use: controller.showDashboard);
 }
 
