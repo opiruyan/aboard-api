@@ -27,9 +27,8 @@ public func routes(_ router: Router) throws {
         }
     }
     
-    router.get("api", "dashboard") { req -> DashboardResponse in
-        return dashboard(req);
-    }
+    let controller = MassiveController()
+    router.get("api", "dashboard", use: controller.showDashboard);
 }
 
 func dashboard(_ req: Request) -> DashboardResponse {
