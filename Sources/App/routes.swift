@@ -19,10 +19,22 @@ public func routes(_ router: Router) throws {
     router.delete("todos", Todo.parameter, use: todoController.delete)
     
     
-    router.post("api", "wizard") { req -> Future<FirstStageSteps> in
+    router.post("api", "wizard") { req -> Future<Jorney> in
         let wizardFuture = try req.content.decode(WizardRequest.self);
-        return wizardFuture.map(to: FirstStageSteps.self) { loginRequest in
-            return FirstStageSteps()
+        let jorney = onBoardJorney();
+        return wizardFuture.map(to: Jorney.self) { loginRequest in
+            return jorney
         }
     }
+}
+
+func onBoardJorney() -> Jorney {
+    let stages = jrn();
+    return Jorney(stages: stages);
+}
+
+func jrn() -> [Stage<ChecklistStep>] {
+    let firstStageSteps = FirstStageSteps()
+    let firstStage = Stage(name: "Introduction", description: "New colleagues' on-boarding FAQ", steps:firstStageSteps.checklist)
+    return [firstStage];
 }

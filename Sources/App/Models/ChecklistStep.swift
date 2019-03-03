@@ -1,6 +1,6 @@
 import Vapor
 
-struct checklistStep: StepProtocol, Content {
+struct ChecklistStep: StepProtocol, Content {
     var item: String;
     var status: String?
 }

@@ -1,6 +1,6 @@
 import Vapor
 
-protocol StepProtocol {
+protocol StepProtocol: Content {
     var item: String { get };
     var status: String? { get set };
 }
